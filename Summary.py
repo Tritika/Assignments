@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
+# Summary of different python programs
 """
-Created on Thu Jan  6 08:31:25 2022
-
-@author: triti
-"""
-#1
+### 1. Function to generate factors of a number
 def factors(a):
     
     for x in range(1,a+1):
@@ -16,20 +12,8 @@ F = factors(n)
 
 print(F)
 
-#2 
-n = int(input('Give me factors of : '))
 
-
-def factors(a):
-    l = []
-    for x in range(1,a+1):
-        if a%x== 0:
-            l.append(x)
-    print(len(l))
-    
-print(factors(n))
-
-#4. 
+### 2. Digital root of a number
 def sum_of_digits(a):
     sum = 0
     while a > 0:
@@ -48,15 +32,14 @@ a = int(input(" Enter a number with more than 1 digit: "))
 
 print("The digital root of ", a, " is ", sum_of_digits(a))
 
-#5. 
+### 3. Recursive function for factorial and binomial
 def fact(n):
     
    if n == 1:
        return n
    else:
        return n*fact(n-1)
-       
-
+  
 def binom(n,k):
     if n == k:
         return n
@@ -74,7 +57,7 @@ print()
 print("Binom function returned for ", n, " and ", k, "is ", binom(n, k))
 
 
-#6. 
+### 4. Find a character in given string input
 s = input("Enter a string: ")
 c = input("Enter a character you wish to find: ")
 
@@ -93,7 +76,7 @@ a = findall(s,c)
 print("Given character is appeared in the following indices: ")
 print(a)
 
-#7. 
+### 5. Sum of cubes of n numbers
 num = int(input("Enter a positive integer: "))
 
 def sumall(n):
@@ -107,17 +90,16 @@ def sumall(n):
 sum = sumall(num)  
 print( "Sum of the cubes of integers is ", sum)
 
-#8. 
-
+### 6. Printing numbers divisible by both 4 and 6 within a given range
 L = range(2000, 3001)
 f = list(filter((lambda x: x%4 == 0 and x%6 != 0), L))
 print(f)
 
-#9.
+### 7. Generating prime numbers using List Comprehension
 n = int(input("Give me prime numbers between 0 and : "))
 print(list(set(range(2,n)) - {x for x in range(n) for y in range(2,x) if x%y == 0}))
 
-#10. 
+### 8. Returning sequence of numbers using generating function 
 def gen_fun(i, last, step):
     sum = i
     while sum <= last:
@@ -139,7 +121,7 @@ for x in seq_2:
 string = "Ritika"
 rev_s = ''
 
-#11
+### 9. Reversing a string and checking for palindrome
 def reverseiter(s):
     L = [x for x in s]
     i = len(L) - 1
@@ -164,7 +146,7 @@ else:
     print("Try something else!")
     
 
-#12 Binet's formula
+### 10. Binet's formula
 import numpy as np
 
 a = (1 + np.sqrt(5))/2
@@ -180,7 +162,7 @@ Fn = ((a**n) - (b**n))/ np.sqrt(5)
 # Converting floating values to integer for clarification
 print(Fn.astype(int))
  
-#12 
+### 11. Masking of array 
 import numpy as np
 
 x = np.random.randint(0, 201, 50)
@@ -191,7 +173,7 @@ print("\n")
 arr = np.ma.array(x, mask = (x % 4 != 0))
 print("Masked Array: ", arr)
 
-#13
+### 12. Visualizing distribution of marks of a class using matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -211,12 +193,8 @@ plt.xlabel('Marks scored')
 plt.ylabel('No. of students')
 plt.title('Marks Distribution of a class of students')
 
-#14 
 
-
-
-
-#15- Gram-Schmidt
+### 13. Gram-Schmidt Process
 
 import numpy as np
 
@@ -256,84 +234,7 @@ else:
     print("\n")
 
 
-# (ii) u1 = (4, -3, 7), u2 = (1, 9, -2), u3 = (7, 11, 6)
-
-u1 = np.array([4, -3, 7])
-u2 = np.array([1, 9, -2])
-u3 = np.array([7, 11, 6])
-
-A = np.array([u1, u2, u3])
-
-# Checking for linear dependency of given matrix before applying Gram-Schmidt Orthogonalization 
-
-if np.linalg.det(A) == 0:
-    print("Since the vectors are Linearly Dependent, we cannot use Gram-Schmidt process on A.")
-
-else:
-    v1 = u3
-    v2 = u2-(np.dot(v1,u2)/np.dot(v1,v1))*v1
-    v3 = u1-(np.dot(v1,u1)/np.dot(v1,v1))*v1-(np.dot(v2,u1)/np.dot(v2,v2))*v2
-    
-    V = np.array([v1,v2,v3])
-    
-    # Normalizing the orthogonalized vectors 
-    w1 = v1/np.linalg.norm(v1)
-    w2 = v2/np.linalg.norm(v2)
-    w3 = v3/np.linalg.norm(v3)
-    
-    W = np.array([w1,w2,w3])
-    
-    print("(ii)")
-    print("Given matrix: \n", A)
-    print("\n")
-    print("Orthogonalized matrix: \n", V)
-    print("\n")
-    print("Ortho-normal matrix: \n", W)
-    print("\n")
-
-
-# (iii) u1 = (3, 4, -2, -5), u2 = (4, 3, 2, 4), u3 = (2, 5, -6, -14)
-u1 = np.array([3, 4, -2, -5])
-u2 = np.array([4, 3, 2, 4])
-u3 = np.array([2, 5, -6, -14])
-
-A = np.array([u1, u2, u3])
-
-# Calculating norms of given vectors
-n1 = np.linalg.norm(u1)
-n2 = np.linalg.norm(u2)
-n3 = np.linalg.norm(u3)
-
-# Calculating dot products of given vectors
-d12 = np.dot(u1,u2)
-d23 = np.dot(u2,u3)
-d13 = np.dot(u1,u3)
-
-# Checking for linear dependency of given matrix before applying Gram-Schmidt Orthogonalization 
-if (d12 == n1*n2) or (d23 == n2*n3) or (d13 == n1*n3):
-    print("Since the vectors are Linearly Dependent, we cannot use Gram-Schmidt process on A.")
-else:
-    v1 = u3
-    v2 = u2-(np.dot(v1,u2)/np.dot(v1,v1))*v1
-    v3 = u1-(np.dot(v1,u1)/np.dot(v1,v1))*v1-(np.dot(v2,u1)/np.dot(v2,v2))*v2
-    V = np.array([v1,v2,v3])
-    
-    # Normalizing the orthogonalized vectors 
-    w1 = v1/np.linalg.norm(v1)
-    w2 = v2/np.linalg.norm(v2)
-    w3 = v3/np.linalg.norm(v3)
-    W = np.array([w1,w2,w3])
-    
-    print("(iii)")
-    print("Given matrix: \n", A)
-    print("\n")
-    print("Orthogonalized matrix: \n", V)
-    print("\n")
-    print("Ortho-normal matrix: \n", W)
-    print("\n") 
-
-
-#16 Integrals - scipy
+### 14. Integrals - scipy
 import numpy as np
 import scipy.integrate as si
 
@@ -388,7 +289,7 @@ fl = lambda c, b, a: a**b - c
 f12 = si.tplquad(fl, 0,1,0,1,0,1)
 print(f12)
 
-#17 Catlan Numbers
+### 15. Catlan Numbers
 import numpy as np
 import scipy.integrate as si
 
